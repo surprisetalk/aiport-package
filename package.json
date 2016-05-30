@@ -1,0 +1,27 @@
+{
+  "name": "aiport-package",
+  "version": "0.0.2",
+  "description": "packaging system for aiport",
+  "main": "package.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/surprisetalk/aiport-package.git"
+  },
+  "keywords": [
+    "aiport",
+    "package"
+  ],
+  "author": "taylor sarrafian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surprisetalk/aiport-package/issues"
+  },
+  "homepage": "https://github.com/surprisetalk/aiport-package#readme",
+  "dependencies": {
+    "npm-keywords": "^1.0.4",
+    "underscore": "^1.8.3"
+  }
+}
