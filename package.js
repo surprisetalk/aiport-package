@@ -31,7 +31,7 @@ module.exports.install = ( aiport_package_type, aiport_package_name ) =>
 
 var sort_packages = package_names =>
 {
-    var package_buckets = {};
+    var package_buckets = { pile: [], annex: [], scaffold: [], scrap: [], plugin: [] };
     for( var i in package_names )
 	if( package_names[i].startsWith('aiport-') )
 	{
