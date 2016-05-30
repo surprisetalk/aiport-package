@@ -47,7 +47,6 @@ module.exports.available = () =>
 	.then( sort_packages );
 
 module.exports.installed = () =>
-    Promise.resolve(
-	sort_packages( 
-	    fs.readdirSync( path.dirname( require.main.filename ) + "/node_modules" )
-		.filter( package_name => package_name.startsWith('aiport-') ) ) );
+    sort_packages( 
+	fs.readdirSync( path.dirname( require.main.filename ) + "/node_modules" )
+	    .filter( package_name => package_name.startsWith('aiport-') ) );
