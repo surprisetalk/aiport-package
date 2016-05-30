@@ -42,11 +42,12 @@ var sort_packages = package_names =>
     return package_buckets;
 };
 
-module.exports.fetch = () => 
+module.exports.available = () => 
     npm_keywords(['aiport'])
 	.then( sort_packages );
 
-module.exports.ls = () =>
-    sort_packages( 
-	fs.readdirSync( path.dirname( require.main.filename ) + "/node_modules" )
-	    .filter( package_name => package_name.startsWith('aiport-') ) );
+module.exports.installed = () =>
+    Promise.resolve(
+	sort_packages( 
+	    fs.readdirSync( path.dirname( require.main.filename ) + "/node_modules" )
+		.filter( package_name => package_name.startsWith('aiport-') ) ) );
