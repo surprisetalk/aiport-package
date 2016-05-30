@@ -1,6 +1,6 @@
 {
   "name": "aiport-package",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "packaging system for aiport",
   "main": "package.js",
   "scripts": {
