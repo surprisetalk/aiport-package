@@ -33,7 +33,7 @@ var sort_packages = package_names =>
 {
     var package_buckets = {};
     for( var i in package_names )
-	if( _( package_names[i] ).startsWith('aiport-') )
+	if( package_names[i].startsWith('aiport-') )
 	{
 	    var package_name_parts = package_names[i].split('-');
 	    if( package_name_parts.length >= 3 )
@@ -44,9 +44,10 @@ var sort_packages = package_names =>
 
 module.exports.available = () => 
     npm_keywords(['aiport'])
+	.then( packages => _.pluck( packages, 'name' ) )
 	.then( sort_packages );
 
 module.exports.installed = () =>
     sort_packages( 
 	fs.readdirSync( path.dirname( require.main.filename ) + "/node_modules" )
-	    .filter( package_name => _(package_name).startsWith('aiport-') ) );
+	    .filter( package_name => package_name.startsWith('aiport-') ) );
