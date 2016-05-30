@@ -33,11 +33,11 @@ var sort_packages = package_names =>
 {
     var package_buckets = {};
     for( var i in package_names )
-	if( package_names[i].startsWith('aiport-') )
+	if( _( package_names[i] ).startsWith('aiport-') )
 	{
-	    var package_name_parts = package_names[i].match( /-([a-z]+)-/gi );
-	    if( package_name_parts.length >= 2 )
-		package_buckets[ package_name_parts[0] ] = _.rest( package_name_parts ).join('-');
+	    var package_name_parts = package_names[i].split('-');
+	    if( package_name_parts.length >= 3 )
+		package_buckets[ package_name_parts[1] ] = _.rest( package_name_parts, 2 ).join('-');
 	}
     return package_buckets;
 };
@@ -49,4 +49,4 @@ module.exports.available = () =>
 module.exports.installed = () =>
     sort_packages( 
 	fs.readdirSync( path.dirname( require.main.filename ) + "/node_modules" )
-	    .filter( package_name => package_name.startsWith('aiport-') ) );
+	    .filter( package_name => _(package_name).startsWith('aiport-') ) );
