@@ -37,7 +37,7 @@ var sort_packages = package_names =>
 	{
 	    var package_name_parts = package_names[i].split('-');
 	    if( package_name_parts.length >= 3 )
-		package_buckets[ package_name_parts[1] ] = _.rest( package_name_parts, 2 ).join('-');
+		package_buckets[ package_name_parts[1] ].push( _.rest( package_name_parts, 2 ).join('-') );
 	}
     return package_buckets;
 };
