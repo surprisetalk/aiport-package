@@ -29,9 +29,34 @@ module.exports.install = ( aiport_package_type, aiport_package_name ) =>
 	})
     );
 
+// TODO: make template function for install and uninstall?
+module.exports.uninstall = ( aiport_package_type, aiport_package_name ) =>
+    new Promise( ( res, rej ) =>
+	npm.load( err => 
+	{
+	    if( err )
+	    {
+		rej( err );
+
+	    } else {
+
+		// TODO: check if exists?
+
+		npm.commands.uninstall( 
+		    [ "aiport-" + aiport_package_type + "-" + aiport_package_name ], 
+		    ( err, data ) => err ? rej( err ) : res( data ) 
+		);
+
+		npm.on('log', message => console.log( message ) );
+	    }
+	})
+    );
+
+// TODO: module.exports.update
+
 var sort_packages = package_names =>
 {
-    var package_buckets = { pile: [], annex: [], scaffold: [], scrap: [], plugin: [] };
+    var package_buckets = { pile: [], annex: [], scrap: [] };
     for( var i in package_names )
 	if( package_names[i].startsWith('aiport-') )
 	{
